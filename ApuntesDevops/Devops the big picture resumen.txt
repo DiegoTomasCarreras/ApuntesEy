@@ -1,0 +1,19 @@
+Devops the big picture
+
+Globomantics
+
+  The company is arranged by funcional area (Like, logistics, human resources, marketing, i.t, etc)
+ Globomantics within it would be something like (Architecture, development, information security, etc)
+
+cots vs custom software (custom seria desarrollado por la empresa y cots comprado)
+
+whats lean all about? : Focuses on customer value, its about adding value and eliminating waste. Its also about 1 piece flow, 1 team should build it, process it and ship it (this is done to eliminate waste)
+
+DevOps definition: C.A.L.M.S
+C (culture): People and process at the forefront
+A (automation): Repeatability by automating activities
+L (Lean): Applying lean principles to i.t
+M (Metrics): Measure extensively and use to improve
+S (Sharing): Continuous learning by sharing knowledge
+
+Googlear que es lean en devops

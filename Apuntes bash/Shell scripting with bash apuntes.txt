@@ -1,0 +1,343 @@
+Shell scripting with bash apuntes
+
+como correr un script en powershell ej: c:\scripts\Probando\Probando.ps1
+
+Executable permissions:
+chmod u+x filename (da permiso para ejecutar, u-x filename los quita) (solo da permiso a u osea user that owns the file)
+
+chmod a+x filename (para que en vez de el creador sea ejecutable por all, creo que u es de user)
+
+siempre poner #!/bin/bash arriba del todo en el script para que abra donde se abra utilize bash
+
+en bash con el ej probando se escribe en el notefil usando el codigo .\Probando.ps1 (si estamos en la carpeta correcta)
+
+cat (es un comando utilizado para leer, es una especie de get content, se puede utilizar para leer notepads por ej)
+
+
+COSAS NECESARIAS PARA USAR EL UBUNTU
+
+cd /mnt :(Para poder moverme como si "estuviera en windows")
+cd c/ : (Para ir al c, observar que no utiliza los :)
+pwd : Nos muestra donde estamos
+ls: Nos muestra lo que hay en donde estamos
+
+cd home
+cd diego/
+mkdir script (para crear una carpeta llamada script)
+ls (para ver lo que hay)
+cd script/
+nano hw (hw es el nombre del script que estamos creando y nano el nombre del editor)
+cat hw (para leer lo que hay dentro del archivo)
+
+#!/bin/bash (linea que siempre debe estar al principio de un script)
+
+echo $1 >> ./notes.txt  (./ significa crea en esta carpeta si tuviese otra cosa antes de la barra seria crear ahi, por ej home/diego/scripts/notes.txt)
+
+echo $* >> ./notes.txt (con el * en vez de 1 sirve para no tener que cerrar el string que metes entre "")
+
+echo $(date): $* >> ./notes.txt (el $(date) es para que antes de la nota aparezca la fecha y hora de cuando se agrego dicha nota)
+
+mv ./notes.txt /home/diego/bin : Para mover un archivo de un lugar a otro, en este caso se mueve notes.txt de el lugar actual ( ./ ) a /home/diego/bin
+
+rm ./notes.txt : Elimina el archivo
+
+PATH=$PATH:~/bin : Para poner algo en el path, no se de que sirve
+
+despues para llamar lo que pusimos en el path se pone cd /
+y despues se pone directamente tn elmensaje  (tn es el nombre del file, basicamente se puede llamar al script sin importar donde estemos)
+
+type NombreDeLoQueSea : el type sirve para checkear si el nombre se puede utilizar o si generara un conflicto ya sea porque hay otro igual o por una palabra reservada
+
+MODULO NUEVO
+VARIABLES
+greeting="hello"  (crea una variable greeting y le asigna el valor hello)
+$greeting (asi se llama a la variable)
+entonces por ej para imprimir greeting se haria echo $greeting (su valor se imprimiria en pantalla)
+
+help read: Como en el powershell si pones help y el comando te tira ayuda
+
+ ejemplo para input y output:
+
+#!/bin/bash
+read -p "Your note: " note
+echo $(date): $note >> home/diego/script/notes.txt
+echo Note saved: $note
+****************************
+TIPS
+acordarse de rodear las variables con ""
+En vez de $variable poner "$variable"
+Es bueno usar {} para indicar donde termina el nombre de una variable
+ej: echo "!${variable}probando" (esto imprimiria el valor de variable y la palabra probando)
+Es mejor usar $HOME en vez de ~
+Para testear los valores en un programa (debugging) se puede utilizar #!/bin/bash -x (lo mismo de siempre pero con menos x)
+Esto lo que hara es mostrar todas las variables y sus valores.
+Se puede lograr lo mismo en ciertos sectores si se pone set -x y despues para detener el debug set+x
+ej:
+set -x
+echo hola
+set +x
+echo chau
+Este programa debugeara hasta el set+x sin incluir el chau
+
+*************************************************************
+Nuevo modulo
+If,then, else (variables)
+
+Ejemplo de if sencillo
+if mkdir a; then echo "ok"; else echo "error"; fi (todo if debe terminar con fi, basicamente si puede crear la carpeta devolvera ok y si no error)
+
+otro ejemplo pero en el notepad (los ; se usan si es en linea de comandos)
+if [[ $note ]]; then
+
+
+
+echo $(date): $note >> "$filename"
+echo Note saved: $note saved to $filename
+else
+echo "No input; note wasnt saved"
+fi
+(el ejemplo no esta entero solo el if)
+
+******************************************
+Expresiones para variable
+[[$var]] (sera true si la variable no esta vacia)
+[[$var ="algo"]] (sera true si la variable es igual a algo)
+Recordar siempre poner espacio entre $var y el = ya que si no siempre devolvera true
+[[-e $filename]] (si filename existe devolvera true)
+[[-d $dirname]] (devolvera true si $dirname es un directorio)
+
+
+exit 1 (sirve para hacer exit de un script) por ej si un if da false pones exit 1 y sale del script
+exit 0 (succesful return value)
+
+If para numeros
+Solo se puede con ints porque bash no reconoce floats
+[[arg1 OPERADOR arg2]]
+-eq : =   (basicamente seria [[arg1 -eq arg2]]
+-ne : !
+-lt : <
+-gt : >
+
+Los =,!,<,etc funcionan solo para strings
+
+elif = else if
+ej:
+if [[talcosa]]
+ echo talcosa
+elif [[talotra]]             //puede que aca me falte un then;
+ echo talotra
+else
+ echo talotraotra
+fi
+
+length 1=${#1} : Creo que sirve para checkear el length de los string
+
+&& = and, como en c#
+
+|| = or, como en c#
+
+printf: es como echo, se utiliza algo asi printf "hello/n" el /n es para salto de linea
+
+el printf sirve para hacer varias cosillas que echo no puede
+
+Input:read revisted (tema nuevo)
+-n : Para que lea hasta cierto numero de caracteres
+-N : Para que empiece a leer despues de cierto numero de caracteres
+-s : Will supress output (useful for passwords)
+-r : Disallows escape sequences (aparentemente es un buen habito usarlo, basicamente si pones algo tipo / que te sacaria con el -r simplemente leeria un / y no se saldria)
+
+ej : read -r; echo $REPLY
+
+while loop ej:
+while [[! $answered ]]; do
+    loqueseaquetengaquehacer
+done                         //basicamente arranca con while [[condicion]]; do
+                             //y termina con un done
+
+
+REDIRECTION (hay tipo mil comandos, googlear a medida que se necesitan)
+ej de redirection: ls > demo (hace que el output de ls sea enviado a un file llamado demo, ls era para mostrar la lista de cosas que hay en la carpeta actual)
+Lo de arriba es output redirection
+Para input rediretion es con <
+
+
+Control flow (loops, for, while, etc)
+
+while loop:
+while test; do
+          codigo que se repite
+done
+
+until loop: (como while pero repite mientras devuelva falso, como while pero al revez basicamente)
+
+for loop:
+for VAR in WORDS; do
+   code to be repeated
+done
+
+
+the c-style for loop:
+for (( INIT; TEST; UPDATE )); do
+ code to be repeated
+done
+
+// es igual que en c# ej; for ((i=0; i<variableLength; i++)); do
+    ejemplo=ejemplo+1
+done
+
+
+break: Comando para salir del loop
+
+continue: Skipea el loop, por ejemplo si esta dentro de un if de un while se skipea todo el while.
+
+
+The case statement (como un switch)
+case WORD in
+     PATTERN1)
+              code for pattern 1;;   /necesita ;; despues del codigo
+     PATTERN2)
+              code for pattern 2;;
+     PATTERNn)
+              code for pattern n;;
+esac                                  //Cantidad de paterns ilimitada, se abre con case y se cierra con esac
+
+ej practico:
+
+case $1 in
+      cat)
+          echo "meow";;
+      dog)
+          echo "woof";;
+      cow) 
+          echo "moo";;
+       *)                          //es como una especie de else ya que * va a matchear con cualquier string
+          echo "unkown animal"
+esac
+
+
+MODULO VARIABLES 2
+
+Integer variables
+declare -i num ($num es la variable)
+
+declare +i num : To unset a variable
+
+Arithmeric expressions
+let command
+let n=100/2  (le pone a n el valor 50)
+((..)) command (es mejor)
+((++x)) le suma 1 a x
+((p=x/100)) le da a p el valor de x/100
+
+$((++x)) esto le sumaria 1 a x y tambien ejecutaria el comando del valro de x+1
+Sin el $ simplemente le sumaria 1
+
+Como hacer un random
+declare -ir target=$(( ($RANDOM % 100) +1)) el % 100 es para que vaya de 0 a 99 y el mas 1 para que nunca sea 0
+ // el -ir es para que sea integer (i) y para que sea read only (r)
+// la variable es target, el declare es para que sea integer
+// Si fuese solo $RANDOM % 100 el numero iria de 0 a 99
+
+Exporting variables
+
+declare -r constante="valor" (esto es una read only variable, como una constnte en c)
+
+export var
+o
+export var="su valor"
+o
+declare -x var="value"
+o
+declare -x var
+
+Arrays
+x[0]="some"
+x[1]="word"
+${x[0]} //esto devolveria el valor some
+${x[*]}  //esto devolveria todos los valores
+
+para declarar un array se puede hacer de 2 maneras
+x[0]="algo"  /esta es la mas vainilla que seria declarando con un valor
+declare -a x (esta seria simplemente declarando el array sin inicializarlo, el -a es por array y el x seria el nombre del array
+
+x=(1 2 3 a b c) (para crear/inicializar un array con muchos valores)
+
+${#nombreArray[@]} (seria como un .count del array, esto devolveria la cantidad de items en el array)
+
+${!nombreArray[@]} (devolvera los indices del array, por ej si los valores eran nomreArray={1 2 wf} esta lienea devovleria 1 2 wf
+
+Nuevo modulo*******************
+
+Special variables 1
+$0 = nombre del script que se esta ejecutando
+
+shift (si los argumentos que recibe un script eran por ej 2 4 6 5, shift los cambiara a 5 6 4 2)
+
+Getopts (ayuda a parsear argument lists) 
+
+getopts optstring name
+
+El getopts se puede utilizar en un while ya que cuando se queda sin elementos devuelve false
+
+No entendi bien el getopts igual
+
+Nuevo modulo*********************************************************
+Funciones en bash
+
+NombreFuncion()
+{
+codigo
+}
+
+para invocar una funcion: NombreFuncion arg1 arg2
+ej
+sum()
+{
+echo $(( $1 + $2 ))
+}
+
+echo $(sum 4 5)
+
+checkear si necesito saber como hacer una variable global
+NUEVO MODULO*********************
+Fun with strings
+
+Parameter expansion
+${varName#pattern} : Removes sortest match from begin of string (creo que match seria porque busca palabras con pattern)
+${varName##pattern} : Removes longest match
+${i#*/} : Will remove * (any) shortest string
+
+Search and replace:
+${var/pattern/string} //Substitutes first match with string
+${var//pattern/string} //Substitutes all matches with string
+
+Regex o regular expression
+=~ does regular expression matching 
+
+Nuevo modulo****************************
+Many ways to run your script
+
+Running code from a file
+
+You can do it by:
+*using hash-bang and running it as a command (executable permission has to be set)
+*If it does not ahve a hash bang run command : bash -x myscript (bash myscript should work aswell)
+
+nice myscript (to run a script with low priority)
+
+nohup (runs a script in the backgroud, even if you close it, it will keep running)
+You can also do it with: myscript & (this one will be suspended if it tries to read input from the terminal and will be disconnected from the interactive session)
+
+nohup will disconnect it from terminal but keep it running
+ej: nohup myscript &
+combining nohup so it keeps running and nice so it doesnt take up too many resources:
+nohup nice myscript &
+
+Running your script at another time
+
+At: Will execute your script at a specific time
+ej: at -f myscript noon tomorrow
+
+Cron: Will execute your script according to a shcedule
+ En ubuntu puede que ambos de estos hayan sido sustituidos directamente con Upstart
+

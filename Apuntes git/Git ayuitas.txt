@@ -1,0 +1,15 @@
+git checkout name
+git checkout name; git commit
+git branch name
+git commit
+git merge
+git rebase
+git checkout master name^ (para ir a su padre)
+^ (googlear como hacer signo de intercalación) 
+~ (buscar como tipearlo tambien) (sirve para subir x cantidad de repositorios) ej: git checkout HEAD~ 
+git reset
+git revert
+reverts changes by moving a branch reference backwards in time to an older commit. In this sense you can think of it as "rewriting history;" 
+git reset will move a branch backwards as if the commit had never been made in the first place.
+
+

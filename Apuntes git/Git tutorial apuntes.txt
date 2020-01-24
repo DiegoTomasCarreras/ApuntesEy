@@ -1,0 +1,108 @@
+Git apuntes
+
+Comandos:
+pwd (print working directory): Returns current folder path location, basicamente te muestra donde estas exactamente
+cd (change directory): Nos cambia de lugar, para mover para arriba se pone "cd .." , para saltar a la beggining home folder se pone cd ~)
+dir: to list files in a directory
+copy con: To create a new empty file
+mkdir:Create a new empty folder
+
+configurando git:
+git help config (te lleva a una pagina web donde te ayuda)
+git config --global user.name "Diego Carreras"
+para el mail es lo mismo de arriba pero con user.email
+Para ver todas las configs es git config --list
+Para ver una config en especfico es git config user.email (por ej)
+
+Creando un repositorio:
+Primero ir a la carpeta requerida
+ej: cd c:\CafeGit
+Luego poner comando git init (esto inicializa un repositorio vacio)
+
+Para agregar un readme.txt: echo "# textoEnElNotepad" >> TituloDelReadMe.md (puede que el # este de mas)
+
+git add .: Para agregar los files al staging area
+
+git commit -m "First commit" //Se agrega el commit junto a el mensaje First commit
+
+git remote add origin www.linkEjemplo.com: Para linkear el repositiorio local con el de github (creo que el origin vendria a ser como una variable)
+
+git push -u origin master (despues poner username y password)
+DESPUES DE ESTO YA SE TENDRIA QUE UPLODEAR
+
+clear: como el cls de powershell
+
+proxy EY:
+git config --global http.proxy http://name.lastname:password@10.143.224.21:8080
+git config --global https.proxy http://name.lastname:password@10.143.224.21:8443
+
+git status (nos dice donde estamos, osea si estamos en el master branch y si esta up to date)
+
+para agregar un untracked file: git add nombreDelFile.txt
+
+Para crear y agregar un file: touch nombreDelFile.txt
+
+git status --short: M significa modified, A new files added to staging area, ?? new file untracked by git
+
+git diff --Staged: Compares our staged changes to our last commit snapshot (What changes have i staged that are ready to be commited?)
+
+git commit -a (commitea todos los cambios, basicamente saltea el git add)
+
+git commit -a -m "Agregue x cosa" (el m agrega un mensaje) 
+
+git push NombreOrigen NombreBranch: Para pasar los cambios locales al github (puedo checkear el branch y el origin con git status)
+
+git log: To view our existing commit history
+
+git log -1: Muestra solo el ultimo commit (si se pone -2 muestra los ultimos 2 y asi sucecivamente)
+
+git log --oneline: Simplifica todos los commit a una descripcion de 1 linea cada uno
+
+git log --stat: Como git log pero tambien muestra los archivos cambiados
+
+git log --patch: Va a mostrar exactamente cada cambio, es el log mas especifico de todos (con q se sale)
+
+git rm NombreDelArchivo.txt: to remove a file in a project (git rm y al lado el nombre de archivo .loquesea) (el rm hace que git lo deje de trackear Y lo elimine de la carpeta)
+
+git rm --cached:Para conservar un archivo en la carpeta pero hacer que git lo deje de trackear
+
+git mv CurrentFileName.txt NewName :to rename a file
+
+git checkout -b new_branch: Para crear una nueva branch (new_branch seria el nombre, -b indica que queremos crear una nueva branch)
+
+git checkout: Te selecciona una branch que quieras
+
+git checkout master: Nos lleva a nuestro master
+
+git branch my_Branch: Si quiero crear una branch pero no estar checkout en ella
+
+git stash: No se la verdad
+
+git stash show:
+
+git stash list:
+
+git stash pop:
+
+git merge nameOfBranch: Para mergear la branch actual en la que estamos con la que queremos (nameOfBranch)
+
+git reset --soft:moves commits back into staging area
+
+git reset --mixed:(or just git reset)Moves changes ba to working directory
+
+git reset --hard: Moves changes to the trash (deletes files)
+
+Para seleccionar a donde hacer el reset se pone por ej: git reset --mixed ece3cc6 (el nombre del repositorio creado por la maquina, se lo puede ver con git log --oneline)
+Esto llevara el reset hasta como estaban las cosas en ese repositorio.
+
+git clone https://github.com/DiegoTomasCarreras/SegundoIntentoV2.git: El link es sacado de nuestro repositorio en github, esto clone/descarga los archivos de github dentro de la carpeta en la que estemos
+
+
+
+
+
+
+
+
+
+

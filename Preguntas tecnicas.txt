@@ -1,0 +1,6 @@
+Pregutnas para el crack:
+
+Que editor utilizar para bash, visual studio code? Que formato ponerle al archivo que guardo?
+
+se hace poniendo el comando : nano /etc/resolv.conf
+dentro de ubuntu

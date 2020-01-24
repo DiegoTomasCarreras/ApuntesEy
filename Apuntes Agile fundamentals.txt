@@ -1,0 +1,50 @@
+Agile fundamentals apuntes
+
+V model and waterfall model> Both good for small projects and easy to understand but with huge disadgantages, such as no working software until late stages, changes are difficult to implement and bad for complex projects.
+
+Agile: Software develops over time
+      Adaptive planning, evolutionary development, early delivery.
+In agile you develop incrementaly instead of all at once.
+
+customer collaboration over contrat negotiation
+
+
+Regular delivery of software:
+The highest priority is to satisfy the customer through early and continuous delivery of software
+
+Working software is the primary measure of progress
+
+agile methodologies:
+Scrum, extreme programming (xp), Crystal, dynamic sistems development method (DSDM), feature driven design (fdd), Lean software development, Kanban.
+
+Advantages of agile method:
+Rapid, continuos delivery of software
+Regular adaptation to changing circumstances
+Early return on investment
+Feedback from real customers
+
+Disadvantages of agile:
+Difficulty to assess the effort required at the beggining of the development cycle
+Costs can increase since testers are required all the time instead of just at the end
+Harder for new starters to integrate the team
+
+Extreme programming:
+
+Extreme programming activities:
+ Writing the application code
+ Testing the system
+ Active listening (listening to your customers and users)
+ Designing your system to reduce coupling
+ 
+
+Scrum
+Its a project framework, commonly used for product development
+
+Scrum roles:
+ Product owner
+ Scrum master
+ Scrum team
+
+ 
+
+ 

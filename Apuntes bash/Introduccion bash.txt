@@ -1,0 +1,28 @@
+hay diferentes maneras de listear con ls
+ls -a incluye hidden files
+ls -l in long format
+ls -la combina las de arriba
+
+para buscar ayuda se utiliza man y el comando
+por ej: man ls
+
+comando para rootearse y ponerse modo admin: sudo su -
+
+output redirection
+
+redirecting standard output stream (save the output of a command to a file)
+ >  (se hace con eso)
+ls > listing.txt    //will create a file and write the output of ls there
+cat > storty.txt    //if file exsists it will overwrite it (this does the same but with the output of cat)
+
+>> (in this case the file will not be overwriten but instead the output will be appended to the end of the file)
+
+echo "buy milk" >> shopping.txt
+
+grep (allows a search within a file)
+
+ej: grep milk supermarketlist.txt (busca milk dentro de el archivo supermarketlist)
+
+
+
+

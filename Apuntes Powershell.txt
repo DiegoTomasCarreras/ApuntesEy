@@ -1,0 +1,186 @@
+POWERSHELL APUNTES
+
+get-service (muestra todos los servicios)
+
+get service | (la | sirve para que nos deje escribir otra linea)
+
+>> where-Object Status -eq 'Stopped' (busca en especifico los servicios que estan Stopped)
+
+>> select-object Name,Status (para que solo se muestre el nombre del servicio y su estado (stopped en caso de ser el de arriba por ejemplo)
+
+Como crear una variable ej:
+
+$data=get-service |Where-Object Status -eq 'Stopped' |select-object Name,Status (calculo que data es el nombre de la variable)
+
+Despues para ver lo que tiene la variable se llama simplemente a &data y muestra su valor, osea los status que estan stopped
+
+$data | out-file .\services.csv  (envia el output, osea el valor a un archivo llamado services.csv, creo que basicamente seria crear un excel con los servicios escritos ahi)
+
+notepad .\services.csv (crea y guarda un notepad y escribe lo que tiene el archivo services.csv que creamos anteriormente)
+
+$data | export-csv .\Services2.csv (crea un segundo archivo excel pero separado con comillas)
+
+get-content .\services2.csv |more (el get-content es para poder verlo en la consola)
+
+
+*******
+Modulo nuevo
+
+Comandos basicos:
+
+get-verb nos muestra todos los comandos
+
+get-Verb -Group Security | format-list (nos muestra todos los comandos de un grupo, en este caso el de Security)
+
+get-Alias (muestra todos los shortcuts de coandos, por ej en vez de escribir Stop-Process se puede escribir spsv)
+
+get-alias -Definition *service* (busca un alias para comandos que tienen que ver con servicios)
+
+3 Comandos muy importantes
+Get-Command (used to search installed commands)
+Get-Help (displays how to use a specific command)
+Get-Member
+
+Como usarlos:
+Help: get-help *Service |more (sirve por ej para buscar ayuda sobre todo lo que tenga Service si se pusiese *hola buscaria con todo lo que contiene hola)
+help get-service (es un shortcut para lo de arriba, incluye el get- y el |more)
+
+cls (clear screen)
+update-help (actualiza)
+help get-service -Examples (da ejemplos sobre para que se usa, es muy util)
+
+ctrl+c (para salir del comando actual, onda si tengo un more infinito pongo eso y lo detiene)
+
+get-command -Verb New (para encontrar los comandos relacionados con el Verbo new)
+
+Como documentar las cosas en powershell
+
+Md c:\scripts\transcripts (Md significa make directory, basicamente crea en el disco C una carpeta que se llama scripts con otra carpeta llamada transcripts adentro
+
+get-history (busca todos los comandos previamente utilizados, estos pueden ser invocados con otro comando)
+
+get-history | Out-File .\transcripts\history.txt (crea un archivo con la historia y la envia a la carpeta transcripts previamente creada y le asigna el nombre history, el nombre history es una variable)
+
+clear-history (sirve para limpiar la historia)
+
+start-transcript (herramienta de transcripcion que capta todo lo que esta en la consola, como errores, basicamente todo lo que se ve en la consola lo va a escribir en algun lugar siempre y cuando este lugar se especifique)
+
+Start-Transcript -path .\transcripts\Transcript1.txt -append (Escribe el texto en un nuevo archivo Transcript1 dentro de la carpeta transcripts)
+Stop-transcript (detiene el proceso)
+Notepad .\Transcripts\transcript1.txt (abre dicho transcript en un notepad)
+
+get-member gets properties and methods of objects, its used to see what makes up an object
+ej: Get-Service |Get-Member  (will show all the properties that are available on an object
+
+Pipelining: Is a way to send the output of one command into a second command 
+
+get-command -Name  *Fire* (encuentra comandos con el nombre fire)
+get-command -Name  get-*Fire* (encuentra get commands que incluyan fire)}
+
+
+
+gm es el shortcut de get member
+entonces por ej: get-NetFireWallRule |gm (mostraria todas las propiedades de el comando get-NetFireWallRule)
+
+Get-NetFirewallRule -Name *RemoteDesktop* (corre el comando netfirewallrule y de todo lo que apareceria solo saca lo que incluye RemoteDesktop
+
+
+using wmi and cim
+
+cim:
+Get-CimClass -ClassName *memory* (busca especificamente las clases de memory en el cim)
+
+
+help get-eventlog -Examples (El examples sirve para ver ejemplos de para que sirve un comando MUY UTIL)
+  
+Get-ComputerInfo -Property *memory* (busca en computer info todas las propiedades que incluyan la palabra memory)
+
+Get-ComputerInfo (toda la info de la compu)
+
+Working with files and folders (archivos y carpetas)
+
+Como copiar un archivo de un lugar a otro ej:
+>Copy-Item "C:\Wabash\Logfiles\mar1604.log.txt" -Destination "C:\Presentation"
+
+Como renombrar un archivo
+Rename-Item -Path "c:\logfiles\daily_file.txt" -NewName "monday_file.txt"
+
+**************
+Nuevo modulo
+Running remote commands with powershell
+
+How to enable powerShell remoting on windows powershell
+
+Enable-PSRemoting (puede que necesite un " -force" al final)
+Set-PSSessionConfiguration
+
+How to enable powershell remoting in powershell core
+Install-PowerShellRemoting.ps1
+
+Variables en powershell
+
+integers $NombreEjemplo=1
+strings $NombreEjemplo="a"
+comandos $NombreEjemplo=Get-Service
+
+Mi computer name es:AR2436718W1
+Como conseguir mi computer name:
+Get-ChildItem ENV: | more (muestra todas las environmental variables
+$env:Computername (crea una variable env y le aplica el valor de la computername
+
+Remoting technologies (creo)
+*-PSSession (to run commands in real time against a remote machine as if your on it)
+
+Invoke-Command (often used to gather data on a script)
+
+New-CimSession (o New-Cim)
+
+$cimsession = New-CimSession -ComputerName $ComputerName -Credential $Credential (crea una variable cimsession y dentro de la variable inicializa una nueva cimsesion y le aplica la variable computername y credential que tienen que haber sido creadas anteriormente)
+
+Get-DNSClientServerAdress- CimSession $cimsession (para obtener el clientserveradress como este soporta cimsession aplicamos al comando la cimsession y nos devolvera los serveradress (ip))
+
+Nuevo modulo******************************
+
+Running scripts in powershell:
+cd c:\scripts\m5 (va a la subcarpeta m5 dentro de scripts) Para correr un script seria por ej c:\scripts\Probando\Probando.ps1 (basicamente sin el cd)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned (si es que no lo esta ya, chequear con Get-ExecutionPolicy)
+
+Windows powershell ise sirve para crear scripts y correrlos/ver y editarlos de una manera mucho mejr
+
+Visual studio code: Descargue un plug in para poder usar powershell ahi, esta bueno porque autocompleta, tambien puse para que el theme sea el de powershell
+
+Building a parameterized scripts:
+Param (             //Creates a mandatory parameter for Compuername and for Service status
+      [Parameter(Mandatory=$true)]
+      [string[]] // el [] al lado de string hace que sea una especie de array, osea que acepte multiples valores
+      $ComputerName
+      )
+
+foreach ($service in $services)
+{
+$ServiceStatus = $service.Status
+$ServiceDisplayName=$service-DisplayName
+}
+
+if($ServiceStatus -eq 'Running')
+{
+// hacer x cosa
+}
+Else {
+//hacer otra
+}
+
+Steps to parameterize(contrario a hard codear):
+El parameter se usa para que si o si se implemente un valor a la variable, como una especie de exception
+
+paso 1: Agregar variables, ej computerName
+paso 2: Crear parametro, hacer el ingreso de computerName mandatory
+
+Variable para obtener el OS:$OS= (Get-CimInstance Win32_OperatingSystem -ComputerName AR2436718W1).caption
+
+Como obtener espacio libre: $drive =Get-WmiObject -class Win32_logicaldisk | Where-Object DeviceID -eq 'C:'
+$FreeSpace =(($drive.freespace)/1gb) //arriba obtiene el espacio libre y abajo lo divide por 1gb para obtenerlo en valor de gb, despues simplemente se llama a freespace y mostrara la cantidad de gb disponibles
+
+help get-service -Online (para obtener la ayuda pero online, esto abre la pagina de microsoft sobre el comando get-service
+
+

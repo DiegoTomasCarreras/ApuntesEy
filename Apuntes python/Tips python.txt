@@ -1,0 +1,218 @@
+Python tips
+
+para agregar variables a una impresion
+ej:
+name= Diego
+lastName=Carreras
+print "Nice to meet you {0} {1}".format(name,lastName)
+o
+print f"Nice to meet you {name} {lastName}"
+
+
+en python none=null
+IF
+
+if name:  //sirve para checkear si una variable es none (null)
+
+print "No es none"
+
+en python en vez de por ej && para and directamente se utiliza la palabra and, or, etc.
+
+LIST
+studentNames=[] //para crear
+studentNames.append("Alumno") //para agregar un alumno, se va a posicionar a lo ultimo
+
+"Alumno" in studentNames//sirve para checkear si hay un elemento con ese nombre en la lista
+por ej: if "Alumno" in studentNames==true:
+len(studentNames) //devuelve la cantidad de elementos en la lista, seria como un .count
+del studentNames[0] //para eliminar un elemento de la lista, probar si se puede con el nombre directamente
+
+List sclicing //para saltear por ej el primer o el ultimo elemento en la lista
+studentNames=[Diego,Andy,Barbie]
+studentNames[1:] //saltea al primer elemento. Va a imprimir "Andy Barbie"
+studentNames[1:-1]//saltea al primer y ultimo elemento. Va a imprimir "Andy"
+
+Para imprimir elementos en una lista
+print(studentNames[0]) //para imprimir un elemento en particular
+
+for //como un foreach// para imprimir todos los elementos de una lista
+
+for name in studentNames:
+print("The student name is {0}".format(name))
+
+como hacer un for en python:
+x=0
+for index in range(10) //calculo que index seria como el contador y range hasta donde llega el contador. Es como que crea una lista
+x+=10
+print("El valor de x es:{0}".format(x))
+
+en range tambien se puede hacer por ej(5,10,2)// el 5 es para que empieze desde el elemento 5 de la lista y para que termine en 10, el 2 es para que vaya de a 2 elementos en vez de a 1 entonces iria = 5,7,9
+
+tuple: una lista cuyos valores no pueden modificarse
+ej: tuple1=(1,2,3,4)
+
+break //sirve para detener un for de seguir corriendo, por ej si se requiere encontrar el nombre Diego en la lista se pone un if que cuando se encuentra se aplica break y asi el for deja de ejecutarse
+continue //es al reves del break, cuando se ejecuta el continue se va a saltear esa parte del codigo y se va a seguir con lo demas, por ejemplo si en el if anterior estaba continue en vez de break en vez de frenar en diego este se hubiese salteado y hubiese seguido ejecutando los demas nombres
+
+WHILE ejemplo
+x=0
+while x<10:
+print("Funciono")
+x+=1
+
+Dictionaries // es como una lista pero a cada elemento se le pueden agregar mas caracteristicas, parecido a un objeto
+
+como crear un dictionary: student{"name":"Diego", "studentId": 10, "feedback":None} //name, studentId y Feedback son keys (como atributos) y estan igualados a sus valores
+
+Para obtener el valor de una key: student["name"] //esto nos dara como resultado Diego
+Para ver las kets: studet.keys()
+Para ver los valores de un alumno: student.values()
+student.get("name","Error") //si el name esta devolvera el name, si no devolvera el mensaje "Error" o lo que sea que le pongamos
+del student("name) //para eliminarlo
+student("name")=Juan Carlos //para cambiar el nombre
+como crear una lista de dictonaries: AllStudents=
+[
+{"name":Diego, "StudentId":10}
+{"name": Andy, "StudentId":11}
+{"name":Barbara,"StudentId":12}                                                 
+]
+
+Exceptions o Exepciones
+
+try:lastName=student("lastName")
+except KeyError:             //Buscara especificamente una excepcion KeyError, por ejemplo TypeError es cuando se intenta sumar un string a un int
+print("Error found")
+except TypeError:
+print ("Error 2 found")
+
+print("Code has been excecuted") //vendria a ser el finally en c#
+
+Cuando no se quiere especificar que tipo de error se pone except Exception: //esto contiene todos los tipos de errores
+
+
+
+MODULOS 2
+
+FUNCIONES
+def //se utiliza para cuando vamos a definir una funcion
+
+ej:
+def add_student(pName):
+students.append(pName)	
+
+para utilizar una funcion con argumentos infinitos se utiliza *args 
+ej:
+def var_Args(name, *args)
+print(name)
+print(args) //el args permite poner una cantidad infinita de argumentos, no es necesario el name, esto es solo un ejemplo 
+
+tambien existe ksargs o key word arguments, sirve para agregar keywords a un dictionary
+ej:
+def var_Args(name,**kwargs):
+print(name)
+print(kwargs["description"],kwargs["feedback"])
+
+aca se llama a la funcion
+var_Args("Diego", description="Loves python", feedback=None)
+
+Nested funcion: Cuando se declara una funcion dentro de una funcion
+
+GUARDADO DE TEXTO EN PYTHON
+w (writing): overwrites the entire file
+r (reading): reading a text file
+a (appending): adding to a new or existing file
+rb: Reading a binary file
+wb: Writing to a binary file
+
+EJEMPLO DE GUARDADO Y LECTURA DE TEXTO
+*************************************************
+students=[]
+def add_student(student):
+    students.append(student)
+def write_file():
+    try:
+        f=open("Students.txt","a")  #opens or creates a new file, a adds a new line
+        f.write(student+"\n")
+    except Exception:
+        print("Error en escritura")
+def read_file():
+    try:
+        f=open("Students.txt","r")
+        for student in f.readlines():
+            add_student(student)
+        f.close()
+    except Exception:
+        print("Error en lectura")
+def print_students():
+    for student in students:
+        print(student)
+
+
+
+
+
+print("Insert the new students name")
+student=input()
+write_file()
+read_file()
+print_students()
+
+
+*****************************************
+
+yield: No entendi mucho, pero el del tut dijo que no se usaba mucho, si lo piden aprenderlo!
+
+lambda funcion: Una funcion normal pero resumida en una linea utilizando la palabra reservada lambda, se utiliza para ahorrar espacio y no escribir tanto codigo
+
+POO
+
+class Student:   //para crear una clase en python
+
+student=Student()  // Para instanciar un objeto de una clase
+
+def __init__()   //Constructor en python
+
+Al crear un metodo en python se debe incluir self: ej: def add_student(self,name,student_id) //tranquilamente podria ser solo (self)
+
+Constructor con argumentos en python
+ def __init__(self,p_name,p_student_id):
+        self.name=p_name
+        self.student_id=p_student_id
+
+def __str__(self): //una especie de override que se llama cada vez que se imprime una instancia de la clase (creo)
+Getter en python
+
+def get_name_capitalize(self):
+return self.name.capitalize()
+
+Setter en python
+//no lo dio en el tut, despues googlear
+
+Herencia:
+class HighSchoolStudent(Student):  //Student es la clase padre
+
+Como overridear un metodo de la clase padre pero retornando tambien el valor original de la clase padre ej:
+
+def get_name_capitalize(self):  //de la clase hijo, suponiendo que en la clase padre hay un metodo con el mismo nombre
+   original_value=super().get_name_capitalize()  //original_value es el nombre de una variable (creo) y super() es lo que invoca al metodo padre
+Con el Super(). se puede llamar a cualquier metodo de la clase padre
+
+Como llamar a una clase desde el main
+
+Se debera importar todo lo del modulo (vendria a ser como un dll)
+from Alumno import*  //Esto hace que se importe absolutamente todo lo que esta en el modulo/archivo de Alumno
+
+Como comentar en python
+# si es para una linea
+"""
+Si es
+para multiples lineas
+"""
+*********************
+Modulo nuevo
+no pude instalar flask por motivos desconocidos, puede que por algo de proxy
+
+*********
+Modulo nuevo
+
+

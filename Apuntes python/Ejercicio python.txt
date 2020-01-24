@@ -1,0 +1,34 @@
+Ejercicios python
+
+#guardando alumnos
+
+students=[]
+def add_student(student):
+    students.append(student)
+def write_file():
+    try:
+        f=open("Students.txt","a")  #opens or creates a new file, a adds a new line
+        f.write(student+"\n")
+    except Exception:
+        print("Error en escritura")
+def read_file():
+    try:
+        f=open("Students.txt","r")
+        for student in f.readlines():
+            add_student(student)
+        f.close()
+    except Exception:
+        print("Error en lectura")
+def print_students():
+    for student in students:
+        print(student)
+
+
+
+
+
+print("Insert the new students name")
+student=input()
+write_file()
+read_file()
+print_students()
