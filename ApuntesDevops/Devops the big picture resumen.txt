@@ -17,3 +17,6 @@ M (Metrics): Measure extensively and use to improve
 S (Sharing): Continuous learning by sharing knowledge
 
 Googlear que es lean en devops
+
+
+
