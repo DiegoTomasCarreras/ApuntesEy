@@ -1,0 +1,7 @@
+Excercise 02
+
+Create a script that runs "content_generator.sh" and 
+
+- Shows when 5 log entries with "Connection Failed" appear under applog.log
+- Counts how many success / failed connections happened
+- Stops the content_generator process

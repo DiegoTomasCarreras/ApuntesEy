@@ -1,0 +1,45 @@
+Infraestructure from code: The big picture
+
+4 stages in devops (Release pipeline)
+
+Source
+Build
+Test
+Release
+
+
+Stage 1 Source: what is source?
+Not just code, its the supported files needed for applications and infrastructure.  
+Source control: Storing code and documentation chages (programas como github)
+
+Version control: Basicamente para lo que se usa github, tener varias versiones de un programa para que si pasa algo poder ir atras hasta donde funcionaba y de ultima publicar eso.
+
+Code review: Reviewing sintax and other things within code structure so it is the same over the whole program. (Not really necessary in this stage, could be done in test stage aswell)
+Stage 2: Build
+
+The idea of the build process is to turn your code into your product.
+
+Turning code into product:
+ *Executes files or scripts to create product
+ *Connects to source control
+ *Can be triggered to start a build activity
+
+Triggering build activity:
+ *Web hool: A web service call from source to start a build activity
+ *Polling agent: Polls for changes in source
+
+Stage 3: Test
+
+Test driven development: You write the tests and then you write the code (es al revez de lo normal)
+Testing vs monitoring: Testing se hace antes del release y monitoring despues
+
+Stage 4: Release
+
+Continuous delivery(CD): Best with immutable servers (evert server matces exact), server can be re-deployed entirely if failure occurs.
+Incremental deployment: For servers that must be mantained over a long perioid of time (when servers are different from each other), for servers that cannot be re-deployed.
+
+Continuous integration: Bringing the process all together with a workflow.
+
+Benefits:
+More frequent deployments, faster recovery from failures and a lower change failure rate.
+ 

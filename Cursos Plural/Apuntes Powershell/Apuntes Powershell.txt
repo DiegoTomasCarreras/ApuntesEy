@@ -183,4 +183,8 @@ $FreeSpace =(($drive.freespace)/1gb) //arriba obtiene el espacio libre y abajo l
 
 help get-service -Online (para obtener la ayuda pero online, esto abre la pagina de microsoft sobre el comando get-service
 
+**********************************************************
+
+Apuntes hechos practicando:
+
 

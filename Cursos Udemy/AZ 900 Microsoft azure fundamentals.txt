@@ -1,0 +1,26 @@
+AZ 900 Microsoft azure fundamentals
+
+Availability: La cantidad de "down time" que tiene una pagina. La idea es que tenga el menor posible y que sea mas available.
+
+Scalability: Poder escalar la app y que su numero de max users posibles sea lo mas alto posible.
+
+Elasticity: Poder subir y bajar la capacidad de una app dependiendo de la demanda que tenga.
+
+Agility: The ability to respond quickly to changes.
+
+Computer paradigms in cloud computers:
+
+Infraestructure as a service (IaaS): Infraesctucture (virtual machines, networking, firewalls)
+
+Platform as a service (PaaS): Upload code packages and have them run, without access to the hardware. (things like webapps)
+
+Software as a service (SaaS): Software availabe to use within the cloud
+
+3 tipos de cloud: Public, private y hybrid.
+
+Modulo 3 (arranco en el 2)************Understand core azure services
+
+Azure resource manager (ARM): Es una API.
+
+
+

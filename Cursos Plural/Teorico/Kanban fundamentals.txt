@@ -1,0 +1,12 @@
+Kanban fundamentals
+
+significa signboard o billboard en japones
+
+2 most important principles in kanban
+Visualize your work and limit your work in process
+
+trello is an online kanban tool
+
+Value stream of a personal kanban: Ready Doing Done (tasks that are ready to do, tasks in process and tasks completed)
+Tambien se puede agregar un blocked column para tareas bloqueadas por x motivo.
+

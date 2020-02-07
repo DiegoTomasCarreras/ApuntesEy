@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ 
+
+while getopts "a:bc" opt; do
+        case $opt in
+                a | --optionA)
+                        echo Mensaje del parametro A: "${OPTARG}"
+                        ;;
+                b)
+                        echo Opcion parametro B
+                        ;;
+                c)
+                        echo Opcion parametro C
+                        ;;
+                \?)
+                        exit 1
+                        echo ERROR
+                        ;;
+        esac
+done

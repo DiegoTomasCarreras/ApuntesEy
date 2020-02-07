@@ -1,0 +1,15 @@
+#!/bin/bash
+
+read userInput
+
+echo $userInput
+saludo="hola"
+echo $saludo
+if [ "$userInput" = "$saludo" ];
+ then
+echo "igual"
+fi
+if [[ "$userInput" != "$saludo" ]];
+then
+echo "desigual"
+fi

@@ -1,0 +1,7 @@
+Fundamentals of cloud computing
+
+Cloud computing is: On demand computing resources delivered to you over the internet.
+Basicamente: A compuing service you traditionally did locally and now perform remotely across the internet.
+
+
+

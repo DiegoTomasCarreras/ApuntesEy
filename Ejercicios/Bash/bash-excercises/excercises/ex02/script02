@@ -1,0 +1,8 @@
+#!/bin/bash
+
+printMessage () 
+{
+echo $(date)"Mensaje:  "$1
+}
+
+printMessage $1

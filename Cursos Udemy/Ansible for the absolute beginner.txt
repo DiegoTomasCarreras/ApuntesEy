@@ -1,0 +1,242 @@
+Ansible for the absolute beginner
+
+YAML
+Fruits:  //array, el - indica que es un elemento del array
+-   Orange
+-   Apple
+-   Banana
+
+
+Dictionary/map
+Banana:
+   Calories: 105  //antes de la palabra debera haber una cantidad equitativa de espacios, en este caso utilize 3
+   Fat: 0.4
+   Carbs: 27
+
+(Lo de arriba representaria la banana y lo que "tiene adentro", si por ejemplo fat tuviese mas espacios signfiicaria que fat es una propiedad de calories, por eso se debe tener mucho cuidado con la cantidad de espacios )
+
+
+Por ej (ejemplo de un auto):
+
+Color: Blue
+Model:
+   Name: Corvette
+   Year: 1995
+Transmission: Manual
+Price: 20.000
+
+//Model vendria a ser como un dictionary adentro de un dictionary ya que contiene name y year
+
+List/array
+
+- Blue Corvette
+- Grey Corvette
+- Red Corvette
+
+List of dictionaries ej:
+ Como lo de arriba del blue corvette pero con otros valores, como por ej un elemento podria ser un red corvette manual y otro azul y automatico etc, eso vendria a ser un list of dictionaries
+ej:
+- Color: Blue
+Model:
+   Name: Corvette
+   Year: 1995
+Transmission: Manual
+Price: 20.000                   //Recordar que el - indica que son un elemento de un array/list
+-Color: Red
+Model:
+   Name: Corvette
+   Year: 2007
+Transmission: Automatic
+Price: 32.000
+
+
+Dictionary es unordered mientras que list es ordered
+Por ej en un dictionary el orden no cambia ej:
+Auto:
+   Color: Rojo
+   Precio: 1000
+
+Auto2:
+   Precio: 1244
+   Color: Azul      
+
+En cambio en un list:
+Auto:
+-   Color: Rojo
+-   Precio: 1000
+
+Auto2:
+-   Color: Azul
+-   Precio 1244
+
+//Aqui se indica el principio con un - y el orden importa
+
+
+Ejemplo de array de employees
+employees:
+
+-
+    
+   name: john
+    
+   gender: male
+    
+   age: 24
+
+//Si queres agregar mas solo pones un - y abajo la info
+
+Modules: Different actions runned by tasks
+
+How to execute an ansible playbook: ansible-playbook playbookFileName
+
+ansible-playbook --help (for help)
+
+PAGINA PARA TESTEAR CODIGO DE YAML
+yamllint.com  //es la clave del exito
+tambien se puede un corrector para el atom desde el cmd ( apm install linter-js-yaml )
+
+para el remote sync: apm install remote-sync
+Despues para configurarlo en la carpeta donde tengamos los archivos (root folder de los archivos)
+Click derecho, remote sync, configure.
+
+Nueva section Modules******************************************
+
+ Scripts to manage services:
+Ej:
+-
+   name: Start services in order
+   hosts: localhost
+   tasks:
+      - service: Start the database service
+           name: postgresql
+           state: started
+
+//se pone Started y no Start, porque de esta manera si esta already started no hace nada y si esta no started lo startea
+
+Nuevo modulo Ansible variables*********************************
+
+para agregar una var en un yaml se hace
+vars:
+    nombreVariable: "Contenido"
+
+Lo que conviene hacer con las variables es directamente llamarlas desde otro archivo (un inventory) y despues "invocarlas" desde el yaml
+
+Para linkear una variable con un archivo la verdad 100% no se como pero creo que es asi
+
+En el inventory
+
+variable=valor
+
+En el Playbook/yaml
+
+CosaRequerida:"{{variable}}"
+
+
+nuevo mudolo Conditionals**********************************
+
+Condicional when (vendria a ser como un if)
+
+Ejemplo:
+Playbook1.yaml
+-
+    
+    name: 'Execute a script on all web server nodes'
+   
+    hosts: all_servers
+    
+    tasks:
+       
+        -  
+           
+            service: 'name=mysql state=started'
+           
+            when: 'ansible_host=="server4.company.com"'
+
+
+
+-
+    
+    name: 'Am I an Adult or a Child?'
+    
+    hosts: localhost
+    
+    vars:
+        
+        age: 25
+    
+    tasks:
+        
+        -   
+            
+            command: 'echo "I am a Child"'
+           
+            when: age<18
+        -
+              
+        -
+            command: 'echo "I am an Adult"'
+            
+            when: age>=18
+
+
+Nuevo modulo Loops************************************
+
+loop: La palabra reservada loop repetira el mismo task each time it runs ej:
+
+tasks:
+   -user: name='{{item}}'    state=present       //creo que si o si debera ser item el nombre de la "variable"
+    loop:
+        - joe
+        - carlos
+        - fernando            //El loop le pondra a todos el state present
+
+
+En caso de tener mas de una propiedad a "rellenar" en loop se hace:
+Ej:
+
+-user: name='{{item.name}}'   state=present   uid='{{item.uid}}'  //Parecido a POO!!!
+
+loop:
+    - name: Carlos
+      uid: 13
+    - name:Fede
+      uid: 32
+    - name: Diego
+      uid: 928
+
+Ejemplo loop con with_items
+
+-
+
+    name: 'Print list of fruits'
+
+    hosts: localhost
+
+    vars:
+
+        fruits:
+
+            - Apple
+
+            - Banana
+
+            - Grapes
+
+            - Orange
+
+    tasks:
+
+        -
+
+            command: 'echo "{{item}}"'
+
+            with_items: '{{fruits}}'
+
+Nuevo modulo Roles*********************************
+
+Para instalar un role en el current directory: ansible-galaxy install geerlingguy.mysql -p ./roles  (Calculo que geernoseque es el role y ./roles es para que en el dir actual se cree una carpeta llamada roles y se instale ahi, o que dentro del dir se instale en una carpeta llamada roles no estoy seguro)
+
+
+Nuevo modulo Cosas random, una especie de tips and tricks*****************************
+
+ 

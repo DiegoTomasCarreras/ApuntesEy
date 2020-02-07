@@ -1,0 +1,6 @@
+Linux command line basics
+
+Para poner strings en bash se utiluza: " " (si pones por ej mkdir my job generara 2 carpetas una my y la otra job, si queremos 1 sola que se llame my job se debera usar "My job"
+
+Si apretas tab autocompleta
+

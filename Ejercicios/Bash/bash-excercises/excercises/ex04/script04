@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "Please input a command"
+echo "a to list all running services"
+echo "b to start a specified service"
+echo "c to stop a specified service"
+echo "d to restart a specified service"
+echo "5 to exit"
+
+read numIngresado
+echo "El numero imgresado fue: $numIngresado"
+case $numIngresado in
+ a)
+echo "Opcion A elegida"
+;;
+b)
+echo "Opcion B elegida"
+;;
+c)
+echo "Opcion C elegida"
+;;
+d)
+echo "Opcion D elegida"
+;;
+*)
+echo "Opcion desconocida, saliendo"
+exit 1
+;;
+esac

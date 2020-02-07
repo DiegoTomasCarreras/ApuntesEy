@@ -1,0 +1,36 @@
+Continuous delivery and DevOps with Azure DevoOps: Source control with Git.
+
+
+
+El modulo 2 tiene para como agregar un repositorio en visual studio y azure, tambien como crear un branch y hacer merge.
+
+Continuous integration: Is the practice of merging all developer working copies to a shared mainline several times a day.
+
+Modulo 3*******************
+
+Git ignore: Para que ciertos archivos no se pasen a la cloud
+
+Se debe en un archivo de texto agregar todos los comandos por asi decirlo que se deberan ignorar (googlear gitignore) y agregarlo a la carpeta que se va a uplodear, despues renombrar el archivo a solo .gitignore, ej: nombreActual.gitignore .gitignore (el segundo .gitignore seria el nombre nuevo, basicamente no tendria nombre creo)
+
+Despues se debera agregar el archivo :git add .gitignore
+
+Y finalmente este archivo debera ser el primer commit : git commit -m "add gitignore"
+
+Despues con git add * (se agregaran todos los archivos excepto por los excluidos)
+
+y finalmente el git commit -m "Comentario aqui sobre lo que se agrego"
+
+despues para linkear el repositorio local con el de azure se hace:
+git remote add origin https://DiegoTCarreras@dev.azure.com/DiegoTCarreras/SourceControl/_git/MyDemoRepo (origin es una variable y el link tambien)
+
+y despues para pushear:
+git push -u origin --all (denuevo origin es una variable)
+
+When moving to continuous delivery try to keep branching to a minimum
+
+modulo 4******************+
+
+Setting up TFVC gated check in
+Setting up continuous integration (No pude hacer ninguno porque no tenia el visual studio)
+Setting up branch policies
+

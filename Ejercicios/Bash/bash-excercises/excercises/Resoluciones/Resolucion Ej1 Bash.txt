@@ -1,0 +1,25 @@
+Resolucion para ej 1;
+
+#!/bin/bash
+
+cd $1 || exit
+
+files=($(ls))
+
+d. count=0
+
+for file in ${files[@]}; do
+if [[ $file = *log* && $file != *.log ]]; then
+mv $file $file.log
+ count=$count+1
+fi
+done
+echo $count files has changed.
+
+
+Tips:
+cd /mnt
+cd /mnt/c/Users/<nombre>/Documents
+
+
+

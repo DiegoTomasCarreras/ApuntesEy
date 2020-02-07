@@ -1,0 +1,6 @@
+With a script with 4 Functions that can be called from parameters
+
+- List all running services
+- Start specified service
+- Stop specified service
+- Restart specified service

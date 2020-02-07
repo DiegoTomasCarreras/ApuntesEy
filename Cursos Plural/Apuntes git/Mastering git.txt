@@ -1,0 +1,92 @@
+Mastering git
+
+The four areas: (git stores info in 4 areas)
+ *Stash
+ *Working area
+ *Index
+ *Repository
+
+ git status (compara los archivos de los 3 stages principales (Working,index y repository) y nos indica si hay algo que hacer o si esta todo up to date)
+ git diff (compara especificamenteel working area con el index)
+ git diff --cached (compara especificamente el index con el repository)
+
+git add (pasa un archivo del working area al index)
+
+git commit (pasa los archivos modificados/agregados del index area al repository)
+
+git checkout (con el git checkout se puede pasar info desde el repository al index y working area)
+
+git rm (para remvoer un archivo)
+despues tira la opcion para --cached o -f, --cached es para guardar el archivo en el working area pero deletearlo del index y -f para deletearlo de ambos lados
+
+Remove puede eliminar archivos del working area y del index, pero jamas del repository
+
+The four areas:Git reset (nuevo modulo)***************************************
+
+reset :Moves the current branch and optionally copies data from repository to the other areas
+
+Los commits se ven con git log
+
+Para "deletear commits" (imaginate que commiteaste algo y te arrepentis o esta mal o lo que sea):
+
+Se pone git reset acaElNombreDelCommit (generalmente el nombre son cosas tipo a213fsr3fa)
+
+git reset ejemplo0101 --hard (git mueve el commit actual al seleccionado, en este casoa ejemplo0101)
+El reset hard tambien copia los contenidos del repository a el index y working area y elimina los commits que se hicieron despues de ejemplo0101
+
+Para resetear el working area y el index pero no necesariamente el repository:
+git reset --hard HEAD (Esto lo que hace es resetear al head, que es generalmente donde estamos, y poner a el working area y el index de la misma manera que el repository)
+Basicamente si la cagas en el working area/index si haces este reset te lo resetea a el ultimo commit (el commit donde esta head aunque no se si necesariamente es el ultimo) asi podes volver a empezar
+
+Nuevo modulo***********************************************
+
+Stash: Suponete que estas haciendo cambios y de la nada tenes que ir a otro branch, el stash sirve para guardar tu progreso.
+
+git stash --include--untracked  (Stores the current status including the untracked files to the stash)
+
+git stash list (shows what is stored in the stash)
+
+git stash apply : To move files from the stash to the index and working area
+
+git stash clear : Deletes files in stash
+
+Supongamos que pasaste con add 2 files al index y te arrepentis de uno, lo que se hace es:
+git reset HEAD NombreDelArchivo.txt  (por default es un mixed reset, si se quiere hard se tiene que hacer con checkout)
+ej: git checkout HEAD NombreDelArchivo.txt (esto vendria a ser como un hard reset para 1 solo archivo)
+
+Nuevo modulo************************************************************
+
+git branch (para ver las branches)
+
+git log (para ver la historia)
+
+git log --graph --decorate --oneline (la manera mas linda de ver graficamente los branches)
+
+Nuevo modulo****************************
+
+GOLDEN RULE: NEVER REBASE SHARED COMMITS AND NEVER CHANGE SHARED HISTORY
+
+googlear interactive rebases y squash (se supone que se pueden usar para dejar un log history mas limpio)
+
+reflog: (guarda los movimientos, checkouts, commits, rebase y cosas asi)
+ej: git reflog HEAD (HEAD es una variable, podria ser el nombre de otro branch o algo asi)
+Calculo que si se pone HEAD muestra todos ya que cuando se utiliza uno es el HEAD 
+
+Reverting commits
+
+git revert 234asf5mf5   (el numero raro seria un ej de un commit, no entiendo bien como funciona)
+
+revert doesnt mean undo, and be careful when you revert merge commits
+
+
+
+
+
+
+
+
+
+
+
+
+

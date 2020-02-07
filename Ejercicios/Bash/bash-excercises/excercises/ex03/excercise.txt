@@ -1,0 +1,10 @@
+Excercise 03
+
+Create a script that contains a parametrized function with the following requisites:
+
+- It accepts one mandatory parameter which will be "the message" to be used 
+- It appends a time-stamp to the beginning of the message (time-stamp + parameter) 
+- It prints it via the standard output.
+
+The script should run and print a sample message.
+

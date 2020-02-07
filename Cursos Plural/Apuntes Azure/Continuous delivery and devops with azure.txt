@@ -1,0 +1,12 @@
+Continuous delivery and devops with azure
+
+boards: Tipo trello
+ 
+pipelines: Provides options to build automations. Includes, continuous integration, deployment automation, continuous delivery, traceability and compliance.
+
+test plans: Para hacer testing
+
+artifacts:packet managment, artifact repo, track usage of external packages, traceability
+
+
+

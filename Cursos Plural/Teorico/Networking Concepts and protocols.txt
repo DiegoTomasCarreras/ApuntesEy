@@ -1,0 +1,82 @@
+Networking concepts and protocols
+
+OSI MODEL:
+Physical (what we use to connect our devices together)
+Data lynk (the place where we move traffic from one device to another device )
+Network (Ip adressing, to send messages across longer distances on our network)
+Transport (TCP)
+Session ()
+Presentation (ASCII)
+Aplication (http)
+
+(Please Do Not Throw Away Sausage Pizza)
+PROTOCOLS AND PORT NUMBERS:
+No anote nada
+
+TCP AND UDP:
+The 3 way handshake (donde by TCP): 3 steprs required to  establish communication between client and server (through network). PC >>>Network>>>Server
+
+The 4 way disconnect: When a client and a server shut down a session ("finish a conversation")
+
+Port numbers: 0 - 65.535
+
+Well known: 0 - 1023  (Server port numbers)
+
+Registered: 1024 - 49.151  (Server port numbers)
+
+Ephemeral/temporary: 49.152-65.535   (Client port numbers)
+
+INTRODUCTION TO BINARY AND HEXADECIMAL:
+
+128 64 32 16 8 4 2 1    (los "placeholders" para calcular binario a decimal y viceversa)
+
+INTRODUCTION TO IP ADRESSING:
+
+Formato de una IP: 0.0.0.0  (numero.numero.numero.numero)
+Los numeros pueden ir desde 0 a 255
+Los primeros 3 numeros son la "network portion" y el ultimo es el "host portion"
+ej: 243.23.54.5  (243.23.54 es network y 5 es host)
+
+Classless adressing (la actual)
+Classful adressing (la vieja, antes de 1995)
+
+Network adress: All 0 in the host portion means it is a network address (basicamente el ultimo numero tiene que ser 0)
+Broadcast adress: All 1 the host portion means broadcast address (el ultimo numero es 255)
+Host adress: Everything exept all 0 or all 1 (0 y 255) in the host portion means it is a Host address.
+Es mas complejo, no esta del todo bien.
+BASICAMENTE TENES LA IP Y LA MASK
+EJ: 10.128.224.64 (ip)
+    255.255.255.0 (mask)
+Como se "come" el ultimo octeto (la mask) significa que la host portion es el ultimo octeto
+
+Con la mask 255.255.255.224 
+Se come solo los ultimos 5 bit ya que 255-224 da 31, por ende si se tendrian que restar los ultimos 5 bits (16,8,4,2,1) por ende el host portion son los ultimos 5 bits)
+
+
+SUBNETTING NETWORKS:
+
+
+INTRODUCTION TO IPV6:
+Esta dividida en 2 portions:
+Network portion y interface identifier, generalmente se divide en 64 bits y 64 bits (en la mitad)
+Para escribir la ip combiene "eliminar los leading 0s" ej: 01 es lo mismo que 1, 01 tiene un leading 0
+
+Entonces en upa ipv6 de ej:
+2001 : DB8 : 0002 : 008D : 0000 : 0000 : 00A5 : 52F5
+
+Se puede resumir a:
+2001 : DB8 : 2 : 8D :0 : 0 : A5 : 52F5
+
+Se puede resumir mas aun si se saca los 0 seguidos y se los remplaza con :: ej:
+2001 : DB8 : 2 : 8D :: A5 : 52F5
+ 
+ETHERNET AND SWITCHING:
+
+SWITCHING FEATURES:
+
+IP ROUTING:
+
+port forwarding: 
+
+
+

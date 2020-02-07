@@ -1,0 +1,33 @@
+Microsoft azurer devops engineer: Levaraging ARM templates for infraestructure
+
+ARM templates: 
+*Parameters
+*Variables
+*Resources
+
+Template:
+$schema : es la locacion del schema
+
+Where to get templates
+
+*Deploy a custom deployment in the portal allows a template to be built from resource types
+*GitHub as a large selection of templates that make a great starting point
+*VS code has an arm tools extension taht provides azure tamplate language support
+
+Deploying an ARM template: 
+Tipically all resources in a template are deployed to a resource group
+It is possible for a template to deploy across resource groups and even subscriptions, however this is not common
+Templates can also be deployed via the portal, powershell and others.
+
+Linked and nested templates:
+
+
+Nuevo modulo**********Implementing source control for templates******************
+
+Basicamente muestra git
+
+linea que no sabia
+git clone url
+Te trae lo que esta en la url
+
+Una pull request es pedirle al master branch que incluya tus cambios

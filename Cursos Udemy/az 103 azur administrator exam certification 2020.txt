@@ -1,0 +1,40 @@
+az 103 azur administrator exam certification 2020
+
+Core azure services
+* Virtual machines - VMs- laaS (o IasS no estoy seguro)
+*App service -PaaS
+*Storage
+
+Azure CLI commands for VM:
+az vm list  (siempre arrancan con az vm verb)
+az vm create  (must provide parameters aswell to create a vm)
+az vm delete  (must also provide parameters)
+
+az keyvault list   
+az keyvault create  (con el keyvault es lo mismo)
+
+az network vnet list  (para las virtual network)
+
+az network vnet subnet list (para una subnet)
+
+Azure powershell commands:
+
+Get-AzVM   (hacen lo mismo que lo de arriba en cli)
+New-AzVM
+Remove-AzVM
+
+Get-AzKeyVault
+New-AzKeyVault
+Remove-AzKeyVault
+
+Get-AzVirtualNetwork  
+
+Get-AzVirtualNetworkSubnetConfig  ( y asi sucecivamente con los demas)
+
+Comandos para setear powershell core:
+Install-Module -Name Az -AllowClobber   (tambien se puede agregar un " -Force" al final)
+
+Connect-AzAccount para (para conectar la cuenta de azure )
+
+
+

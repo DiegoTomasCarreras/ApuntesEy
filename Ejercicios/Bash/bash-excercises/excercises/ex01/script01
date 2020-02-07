@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd $1
+echo "The current directory is: "
+pwd
+#Se pone  entre parentesis y con $ para que se ejecute como comando, si no simplemente se guardaria ls como un string
+files=($(ls))
+echo $files"Probando"
+#Aparentemente para recorrer un array se tiene que usar el ${[@]}, el arroba es para que lo haga con todos los valores del array, lo demas no se
+for file in ${files[@]}; do
+if [[ $file = *log* ]]; then
+#Aca se cambia el nombre del archivo
+echo "debuggeando"
+mv $file $file.log
+fi
+done
